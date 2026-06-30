@@ -18,24 +18,24 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Extract app.zip
-        uses: falti/unzip-action@v1
+        uses: ihiroky/extract-action@v1
         with:
-          path: app.zip
+          file_path: app.zip
 
       - name: Extract components.zip
-        uses: falti/unzip-action@v1
+        uses: ihiroky/extract-action@v1
         with:
-          path: components.zip
+          file_path: components.zip
 
       - name: Extract lib.zip
-        uses: falti/unzip-action@v1
+        uses: ihiroky/extract-action@v1
         with:
-          path: lib.zip
+          file_path: lib.zip
 
       - name: Extract public.zip
-        uses: falti/unzip-action@v1
+        uses: ihiroky/extract-action@v1
         with:
-          path: public.zip
+          file_path: public.zip
 
       - name: Commit and push extracted files
         run: |
