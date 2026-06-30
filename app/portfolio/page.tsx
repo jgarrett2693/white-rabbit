@@ -1,19 +1,45 @@
+import type { Metadata } from "next";
 import SceneHero from "@/components/SceneHero";
-import { pages } from "@/lib/pages";
+import SectionHeading from "@/components/SectionHeading";
+import PortfolioGrid from "@/components/PortfolioGrid";
+import CtaBand from "@/components/CtaBand";
 
-const page = pages.find((p) => p.slug === "portfolio")!;
+export const metadata: Metadata = {
+  title: "Portfolio",
+  description:
+    "Selected projects, visual direction, properties, collaborations, and case studies from White Rabbit Productions.",
+  alternates: { canonical: "/portfolio" }
+};
 
-export default function Page() {
+export default function PortfolioPage() {
   return (
     <>
-      <SceneHero {...page} />
+      <SceneHero
+        eyebrow="Portfolio"
+        title={"A Curated Body\nof Work"}
+        body="Selected projects across production, properties, brand, experiences, and consulting."
+        image="/assets/scene-brand.png"
+        imageAlt="A dark studio with a director's chair beneath a single spotlight."
+        priority
+      />
 
       <section className="section">
-        <p className="eyebrow">White Rabbit Standard</p>
-        <h2>Every detail should feel intentional.</h2>
-        <p className="lede">This page is structured so Claude Code can expand it with finalized copy, forms, galleries, booking modules, or CMS-powered content while preserving the brand system.</p>
+        <div className="container-wr">
+          <SectionHeading
+            eyebrow="Selected Work"
+            title="Filtered by discipline."
+            body="A representative selection. Full case studies are shared privately on request."
+          />
+          <div className="mt-14">
+            <PortfolioGrid />
+          </div>
+        </div>
       </section>
 
+      <CtaBand
+        title="Interested in working together?"
+        cta={{ label: "Inquire Within", href: "/book" }}
+      />
     </>
   );
 }
