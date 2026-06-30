@@ -2,7 +2,9 @@ name: Extract Zip Files
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - claude/unzip-extract-action-yrmk45
   workflow_dispatch:
 
 jobs:
