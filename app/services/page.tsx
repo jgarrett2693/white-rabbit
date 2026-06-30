@@ -1,24 +1,47 @@
+import type { Metadata } from "next";
 import SceneHero from "@/components/SceneHero";
-import { pages } from "@/lib/pages";
+import SectionHeading from "@/components/SectionHeading";
+import ServiceAccordion from "@/components/ServiceAccordion";
+import CtaBand from "@/components/CtaBand";
+import { services } from "@/lib/content";
 
-const page = pages.find((p) => p.slug === "services")!;
+export const metadata: Metadata = {
+  title: "Services",
+  description:
+    "Production, consulting, wellness, property management, brand collaborations, and bespoke experiences — executed quietly under one refined identity.",
+  alternates: { canonical: "/services" }
+};
 
-export default function Page() {
+export default function ServicesPage() {
   return (
     <>
-      <SceneHero {...page} />
+      <SceneHero
+        eyebrow="Services"
+        title={"Selective Services,\nExecuted Quietly"}
+        body="A focused practice across production, consulting, wellness, property, collaborations, and bespoke experiences."
+        image="/assets/scene-system.png"
+        imageAlt="A quiet executive setting overlooking a city skyline at dusk."
+        priority
+      />
 
       <section className="section">
-        <div className="grid">
-          <div className="card"><span>01</span><h3>Production</h3><p>Creative direction, media, content, and polished brand visuals.</p></div>
-          <div className="card"><span>02</span><h3>Consulting</h3><p>Business, brand, hospitality, and client experience strategy.</p></div>
-          <div className="card"><span>03</span><h3>Property Management</h3><p>Curated property presentation, guest flow, operations, and premium positioning.</p></div>
-          <div className="card"><span>04</span><h3>Wellness</h3><p>Exclusive wellness offerings designed with privacy and high-touch service.</p></div>
-          <div className="card"><span>05</span><h3>Collaborations</h3><p>Selective partnerships, limited releases, and brand-aligned projects.</p></div>
-          <div className="card"><span>06</span><h3>Bespoke</h3><p>Custom requests, private experiences, and refined execution.</p></div>
+        <div className="container-wr">
+          <SectionHeading
+            eyebrow="Practice"
+            title="Six disciplines, one standard."
+            body="Each engagement is shaped to its purpose. Select a discipline to learn more, then inquire when the fit feels right."
+          />
+          <div className="mt-14">
+            <ServiceAccordion services={services} />
+          </div>
         </div>
       </section>
 
+      <CtaBand
+        title="Not sure where your project fits?"
+        body="Tell us the intention and the constraints. We will point you to the right starting place."
+        cta={{ label: "Inquire Within", href: "/book" }}
+      />
     </>
   );
 }
