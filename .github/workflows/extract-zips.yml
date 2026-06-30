@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - claude/unzip-extract-action-yrmk45
+      - fix/remove-macosx-artifacts
   workflow_dispatch:
 
 jobs:
@@ -37,10 +37,13 @@ jobs:
         with:
           file_path: public.zip
 
+      - name: Remove macOS artifacts
+        run: rm -rf __MACOSX
+
       - name: Commit and push extracted files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git diff --cached --quiet && echo "No changes to commit" || git commit -m "chore: extract zip files into folders"
+          git add -A
+          git diff --cached --quiet && echo "No changes to commit" || git commit -m "chore: extract zip files and remove macOS artifacts"
           git push
