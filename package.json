@@ -9,6 +9,8 @@
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "framer-motion": "latest",
     "gsap": "latest",
     "lenis": "latest",
